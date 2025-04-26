@@ -1,0 +1,40 @@
+CREATE TABLE Cliente 
+( 
+ id_cliente INT PRIMARY KEY,  
+ nome INT,  
+ bairro INT,  
+); 
+
+CREATE TABLE Locacao 
+( 
+ id_cliente INT,  
+ id_locacao INT PRIMARY KEY,  
+ id_bicicleta INT,  
+ data_inicio INT,  
+ data_fim INT,  
+); 
+
+CREATE TABLE Bicicleta 
+( 
+ id_bicicleta INT PRIMARY KEY,  
+ tipo INT,  
+ Modelo INT,  
+); 
+
+CREATE TABLE Cliente_Loc 
+( 
+ id_cliente INT PRIMARY KEY,  
+ id_locacao INT PRIMARY KEY,  
+); 
+
+CREATE TABLE Loc_Bic 
+( 
+ id_locacao INT PRIMARY KEY,  
+ id_bicicleta INT,  
+); 
+
+ALTER TABLE Locacao ADD FOREIGN KEY(id_cliente) REFERENCES undefined (id_cliente)
+ALTER TABLE Cliente_Loc ADD FOREIGN KEY(id_cliente) REFERENCES Cliente (id_cliente)
+ALTER TABLE Cliente_Loc ADD FOREIGN KEY(id_locacao) REFERENCES Locacao (id_locacao)
+ALTER TABLE Loc_Bic ADD FOREIGN KEY(id_locacao) REFERENCES Locacao (id_locacao)
+ALTER TABLE Loc_Bic ADD FOREIGN KEY(id_bicicleta) REFERENCES Bicicleta (id_bicicleta)
